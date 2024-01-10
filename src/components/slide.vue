@@ -11,17 +11,13 @@ const data = ref([
     { id: 5, url: 'https://picsum.photos/500/500?random=5' },
 ])
 const firstId = ref(1)
-
 const name = ref(true)
-
 const nameShow = computed(() => {
     return name.value ? 'next' : 'pre'
 })
-
 const carShow = (id) => {
     firstId.value = id
 }
-
 const nextHandler = () => {
     name.value = true
     if (firstId.value < 5) {
@@ -30,7 +26,6 @@ const nextHandler = () => {
         firstId.value = 1
     }
 }
-
 const preHandler = () => {
     name.value = false
     if (firstId.value <= 5 && firstId.value >= 2) {
@@ -39,18 +34,9 @@ const preHandler = () => {
         firstId.value = 5
     }
 }
-
-
 const autoSlide = onMounted(() => {
     setInterval(nextHandler, 5000)
 })
-
-
-
-
-/*****************************************/
-
-
 </script>
 
 <template>
@@ -69,8 +55,6 @@ const autoSlide = onMounted(() => {
             </div>
             <button @click="nextHandler">&rarr;</button>
         </div>
-
-        <br>記得移除 :{{ nameShow }}
     </div>
 </template>
 
@@ -120,8 +104,11 @@ const autoSlide = onMounted(() => {
     justify-content: center;
 
     button {
-        margin: 0 .5px;
+        margin: 0 20px;
         cursor: pointer;
+    }
+    .center{
+        width: 30%;
     }
 }
 

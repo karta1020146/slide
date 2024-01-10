@@ -2,14 +2,10 @@
 
 import { computed, onMounted, ref, watch } from 'vue'
 
-const data = ref([
-    { id: 1, url: 'https://picsum.photos/500/500?random=1' },
-    { id: 2, url: 'https://picsum.photos/500/500?random=2' },
-    { id: 3, url: 'https://picsum.photos/500/500?random=3' },
-    { id: 4, url: 'https://picsum.photos/500/500?random=4' },
-    { id: 5, url: 'https://picsum.photos/500/500?random=5' },
-    { id: 5, url: 'https://picsum.photos/500/500?random=5' },
-])
+// const data = ref()
+const props = defineProps({
+    data:Array
+})
 const firstId = ref(1)
 const name = ref(true)
 const nameShow = computed(() => {
@@ -106,9 +102,10 @@ const autoSlide = onMounted(() => {
     button {
         margin: 0 20px;
         cursor: pointer;
+        font-size: 25px;
     }
     .center{
-        width: 30%;
+        width: 15%;
     }
 }
 

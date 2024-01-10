@@ -39,7 +39,7 @@ const autoSlide = onMounted(() => {
     <div class="aaa">
         <div class="data">
             <TransitionGroup :name="nameShow">
-                <div v-for="item of data" :key="item.id" v-show="item.id == firstId">
+                <div v-for="item of props.data" :key="item.id" v-show="item.id == firstId">
                     <img :src="item.url">
                 </div>
             </TransitionGroup>
@@ -47,7 +47,7 @@ const autoSlide = onMounted(() => {
         <div class="control">
             <button @click="preHandler">&larr;</button>
             <div class="center">
-                <span v-for="item of data" :key="item.id" @click="carShow(item.id)"> </span>
+                <span v-for="item of props.data" :key="item.id" @click="carShow(item.id)"> </span>
             </div>
             <button @click="nextHandler">&rarr;</button>
         </div>

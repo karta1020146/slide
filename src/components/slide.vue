@@ -4,7 +4,7 @@
         inheritAttrs:false
     })
 
-    // const data = ref([])
+    // const data = ref()
     const props = defineProps({
         data:Array
     })
@@ -89,8 +89,7 @@
         margin: auto;
 
         img {
-            width: 155%;
-            object-fit: contain;
+            width: 100%;
             overflow: hidden;
         }
     }

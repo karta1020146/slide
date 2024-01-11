@@ -1,38 +1,40 @@
 <script setup>
+    import { computed, onMounted, ref, watch } from 'vue'
+    defineOptions({
+        inheritAttrs:false
+    })
 
-import { computed, onMounted, ref, watch } from 'vue'
-
-// const data = ref()
-const props = defineProps({
-    data:Array
-})
-const firstId = ref(1)
-const name = ref(true)
-const nameShow = computed(() => {
-    return name.value ? 'next' : 'pre'
-})
-const carShow = (id) => {
-    firstId.value = id
-}
-const nextHandler = () => {
-    name.value = true
-    if (firstId.value < 5) {
-        firstId.value += 1
-    } else {
-        firstId.value = 1
+    // const data = ref()
+    const props = defineProps({
+        data:Array
+    })
+    const firstId = ref(1)
+    const name = ref(true)
+    const nameShow = computed(() => {
+        return name.value ? 'next' : 'pre'
+    })
+    const carShow = (id) => {
+        firstId.value = id
     }
-}
-const preHandler = () => {
-    name.value = false
-    if (firstId.value <= 5 && firstId.value >= 2) {
-        firstId.value -= 1
-    } else {
-        firstId.value = 5
+    const nextHandler = () => {
+        name.value = true
+        if (firstId.value < 5) {
+            firstId.value += 1
+        } else {
+            firstId.value = 1
+        }
     }
-}
-const autoSlide = onMounted(() => {
-    setInterval(nextHandler, 5000)
-})
+    const preHandler = () => {
+        name.value = false
+        if (firstId.value <= 5 && firstId.value >= 2) {
+            firstId.value -= 1
+        } else {
+            firstId.value = 5
+        }
+    }
+    const autoSlide = onMounted(() => {
+        setInterval(nextHandler, 5000)
+    })
 </script>
 
 <template>
@@ -47,7 +49,7 @@ const autoSlide = onMounted(() => {
         <div class="control">
             <button @click="preHandler">&larr;</button>
             <div class="center">
-                <span v-for="item of props.data" :key="item.id" @click="carShow(item.id)"> </span>
+                <span v-bind="$attrs" v-for="item of props.data" :key="item.id" @click="carShow(item.id)"> </span>
             </div>
             <button @click="nextHandler">&rarr;</button>
         </div>

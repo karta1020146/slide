@@ -89,7 +89,7 @@
         margin: auto;
 
         img {
-            width: 150%;
+            width: 160%;
             overflow: hidden;
         }
     }
